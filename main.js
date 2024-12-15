@@ -7,13 +7,21 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+let current_marker = null;
+
 function onMapClick(e) { 
-    call_api(e.latlng);
     create_pointer(e.latlng);
+    call_api(e.latlng);
 }
 
 function create_pointer(coordinates) {
-    L.marker([coordinates.lat, coordinates.lng]).addTo(map);
+    // If a marker already exists, update its position
+    if (current_marker) {
+        current_marker.setLatLng([coordinates.lat, coordinates.lng]);
+    } else {
+        current_marker = L.marker([coordinates.lat, coordinates.lng]);
+        current_marker.addTo(map);
+    }
 }
 
 map.on('click', onMapClick);
