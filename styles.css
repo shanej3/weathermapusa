@@ -1,0 +1,14 @@
+#page { 
+    display : grid;
+    grid-template-rows: 5vh 90vh 5vh;
+}
+#map {
+    height : 90vh;
+    border-radius : 1rem;
+
+}
+
+.main {
+    display : grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
