@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherMapUSA</title>
+    <script type="module" src="render.js" defer></script>
     <script type="module" src="api.js" defer></script>
     <script type="module" src="main.js" defer></script>
+    
     
     <link rel = "stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -24,7 +26,9 @@
         <div class="main">
             <div id="left-of-map"></div>
             <div id="map"></div>
-            <div id="right-of-map"></div>
+            <div id="right-of-map">
+                <!--14 day forecast-->
+            </div>
         </div>
         <div class="footer">
     

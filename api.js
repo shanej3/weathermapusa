@@ -1,5 +1,6 @@
 // initialize 
 
+import { render } from "./render.js";
 export function call_api(coordinates) { 
     //console.log(coordinates);
     let initial_api_url = `https://api.weather.gov/points/${coordinates.lat},${coordinates.lng}`
@@ -35,8 +36,8 @@ function second_call(initial_data) {
         return response.json();
     })
     .then(data => {
-        console.log(data);
-        display_weather(data.properties); // all data we care about is in 'properties'
+        render(data);
+        //display_weather(data.properties); // all data we care about is in 'properties'
     })
     .catch(error => {
         console.error("ERROR", error.message);
