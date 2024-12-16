@@ -1,3 +1,7 @@
+body {
+    background-color: #f2f0e9;
+}
+
 #page { 
     display : grid;
     grid-template-rows: 5vh 90vh 5vh;
@@ -5,6 +9,7 @@
 #map {
     height : 90vh;
     border-radius : 1rem;
+    border : 0.2rem solid black;
 
 }
 

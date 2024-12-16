@@ -1,7 +1,9 @@
 // setup
 import { call_api } from './api.js'
-var map = L.map('map').setView([39, -97], 4.5);
 
+var map = L.map('map').setView([39, -97], 4.5);  // set map up, views USA
+
+// tilelayer from openstreemap
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -11,7 +13,7 @@ let current_marker = null;
 
 function onMapClick(e) { 
     create_pointer(e.latlng);
-    call_api(e.latlng);
+    call_api(e.latlng);  // api.js
 }
 
 function create_pointer(coordinates) {
