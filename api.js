@@ -10,8 +10,8 @@ function first_call(url) {
     fetch(url)
     .then(response => {
         if (!response.ok) {
-            alert("Error connecting to NWS");
-            throw new Error("NWS CONNECTION ERROR");
+            alert("ERROR: Out of Bounds or Connection Failure");
+            throw new Error("API ERROR (1st call)");
         }
         return response.json();
     })
@@ -19,7 +19,7 @@ function first_call(url) {
         second_call(data);
     })
     .catch(error => {
-        console.error("API CALL FAILED", error.message);
+        console.error("ERROR", error.message);
     })
 }
 
@@ -29,22 +29,22 @@ function second_call(initial_data) {
     fetch(main_url)
     .then(response => {
         if (!response.ok) {
-            alert("Error connecting to NWS");
-            throw new Error("NWS CONNECTION ERROR");
+            alert("ERROR: Out of Bounds or Connection Failure");
+            throw new Error("API ERROR (2nd call)");
         }
         return response.json();
     })
     .then(data => {
+        console.log(data);
         display_weather(data.properties); // all data we care about is in 'properties'
     })
     .catch(error => {
-        console.error("Error", error.message);
+        console.error("ERROR", error.message);
     })
 }
 }
 
 function display_weather(final_data) {
-    console.log(final_data);
     for (let i = 0; i < 14; i++) {
         console.log(`${final_data.periods[i].name} : ${final_data.periods[i].temperature}`);
         // loops through 14 days, prints day : temperature
