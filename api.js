@@ -8,8 +8,9 @@ export function call_api(coordinates) {
     let initial_api_url = `https://api.weather.gov/points/${coordinates.lat},${coordinates.lng}`
     first_call(initial_api_url);
 
-
 function first_call(url) {
+    // NWS API requires 2 calls, 1 for main data, and another to access specific 
+    // data, in this case i want forecast (week) and forecastHourly (day)
     fetch(url)
     .then(response => {
         if (!response.ok) {
@@ -19,8 +20,6 @@ function first_call(url) {
         return response.json();
     })
     .then(data => {
-        // NWS API requires 2 calls, 1 for main data, and another to access specific 
-        // data, in this case i want forecast (week) and forecastHourly (day)
         call_for_weekly_forecast(data);
         call_for_daily_forecast(data);
     })
