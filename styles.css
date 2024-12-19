@@ -11,7 +11,7 @@ body {
 }
 #map {
     height : 85vh;
-    border-radius : 1rem;
+    border-radius : 0rem;
     border : 0.2rem solid black;
     align-self : center;
 
@@ -53,5 +53,13 @@ body {
     background-color: #267fca;
     padding : 0;
     margin : 0;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+#header-text {
+    color : #f2efe9;
+    font-size : 2rem;
+    
 }
 

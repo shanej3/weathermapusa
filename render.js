@@ -24,36 +24,34 @@ export function daily_forecast(data) {
     leftOfMap.appendChild(current_temp_div);
     leftOfMap.appendChild(current_conditions_div);
 
-    // for (let i = 0; i < 12; i++) {
-    //     const hour_div = document.createElement('div');
-    //     hour_div.className = "hour-forecast";
-    //     hour_div.textContent = `${segmented_data.periods[i].temperature}`;
-    //     leftOfMap.appendChild(hour_div);
-    // }
-
 }
 
 export function one_week_forecast(data) {
     let segmented_data = data.properties;
-    console.log(segmented_data);
+    //console.log(segmented_data);
 
     rightOfMap.innerHTML = ''; 
     //clears previous HTML, may need to do this a different way in the future
 
     
     let index_to_start = 0;
+    let index_to_end = 0;
     // we want the index to start after the current day's condition 
     // if it's daytime, then the API gives us the high and low of today, whereas
     // if it's nighttime it only gives us the night, again both of these we DONT want
     if (segmented_data.periods[0].isDaytime == true) { 
         index_to_start = 2;
+        index_to_end = 12;
     }
     else if (segmented_data.periods[0].isDaytime == false) {
         index_to_start = 1;
+        index_to_end = 13;
     }
-    for (let i = index_to_start; i < 13; i++) {
+
+    for (let i = index_to_start; i < index_to_end; i++) {
         if (segmented_data.periods[i].isDaytime == true)
         {
+            // displays days as [Day] : [High temp]-[Low temp]
             const day_div = document.createElement('div');
             day_div.className = "day-forecast";
             day_div.textContent = `${segmented_data.periods[i].name} : ${segmented_data.periods[i].temperature}° - ${segmented_data.periods[i+1].temperature}°`;
